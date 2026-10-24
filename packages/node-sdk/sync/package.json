@@ -17,6 +17,7 @@
     "@effectstream/db": "workspace:*",
     "@effectstream/log": "workspace:*",
     "@effectstream/utils": "workspace:*",
+    "ckb-multichain-connector": "file:../../../../ckb-multichain-connector",
     "@midnightntwrk/ledger-v9": "1.0.0-rc.3",
     "@midnight-ntwrk/midnight-js-indexer-public-data-provider": "5.0.0-beta.6",
     "@midnight-ntwrk/onchain-runtime": "npm:@midnightntwrk/onchain-runtime-v4@4.0.0-rc.3",
