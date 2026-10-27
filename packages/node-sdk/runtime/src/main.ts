@@ -52,6 +52,7 @@ import { ConfigNetworkType, usePaimaStaticConfig } from "@effectstream/config";
 import type { SecurityNamespace, SyncProtocolWithNetwork } from "@effectstream/config";
 import { builtInPrimitivesMap } from "@effectstream/sm";
 import { validateAndSnapshotConfig } from "./config-snapshot.ts";
+import { validateCkbEvmRelayConfig } from "./ckb-evm-relay.ts";
 
 export function* init() {
   // initialize OpenTelemetry
@@ -107,6 +108,7 @@ function* superviseChild(
  * @param config - Paima Engine Node configuration object.
  */
 export function* start(config: StartConfig): Operation<void> {
+  if (config.ckbEvmRelay) validateCkbEvmRelayConfig(config.ckbEvmRelay);
   // Why the runtime is stopping, in the order the failures happened.
   const causes: unknown[] = [];
   // What went wrong while releasing resources, in teardown order.
