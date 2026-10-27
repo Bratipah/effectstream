@@ -8,7 +8,13 @@ The repository now includes a reproducible local run that starts a disposable Po
 
 Requirements:
 
-- Bun 1.3 or later and dependencies installed with `bun install` at the repository root.
+- Bun 1.4.0 (the version pinned in CI) and root dependencies installed with `bun install --frozen-lockfile`.
+- Dashboard runtime dependency installed separately because `apps/` is not part of the root Bun workspace:
+
+  ```sh
+  cd apps/ckb-relay-dashboard && bun install --no-save
+  ```
+
 - OffCKB CLI exactly `0.4.13`, with its CKB `0.208.0` binary already available in `~/.local/share/offckb-nodejs/bins/0.208.0/ckb`.
 - Foundry `forge`, Google Chrome, and PostgreSQL 16, 17, or 18 binaries (`initdb`, `pg_ctl`, `pg_isready`, `psql`, `postgres`). PostgreSQL need not be running as a service. The script only starts a temporary loopback cluster.
 - The ports `8114`, `28114`, `8545`, `8546`, `4747`, `9999`, `3334`, `4173`, and `55432` must be free. Preflight checks them and refuses to stop anything it did not start.
