@@ -55,8 +55,9 @@ export function caip2PrefixFor(
       return `test:${config.name}`;
     case ConfigNetworkType.CKB:
       // CKB does not yet have a registered CAIP-2 namespace; bind the local
-      // namespace to the configured genesis hash to avoid cross-network aliasing.
-      return `ckb:${config.genesisBlockHash.slice(2, 34).toLowerCase()}`;
+      // namespace to the full configured genesis hash so distinct genesis
+      // hashes cannot alias through truncation.
+      return `ckb:${config.genesisBlockHash.slice(2).toLowerCase()}`;
     case ConfigNetworkType.EVM:
       // https://github.com/ChainAgnostic/namespaces/tree/main/eip155
       return `eip155:${config.chainId}`;

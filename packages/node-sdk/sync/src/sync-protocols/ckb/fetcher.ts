@@ -110,9 +110,8 @@ export class CkbFetcher extends BaseDataFetcher<Input, Output, RootOutput, Page,
         blockNumber: Number(event.source.blockHeight),
         transactionHash: event.source.transactionHash,
         transactionIndex,
-        // EffectStream currently requires this EVM-era field. CKB uses the matched script hash
-        // as the stable source identifier; the full CKB event remains in output.payload.
-        contractAddress: event.cell.matchedScriptHash,
+        // A CKB script hash is not an address. Keep it in the typed event
+        // payload instead of the shared field used for address routing/display.
       },
       primitive: primitiveId,
       output: { payloadType: "ckb-cell-created:v1", payload: event },

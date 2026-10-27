@@ -1,5 +1,6 @@
 import { expect, test } from "bun:test";
 import { ConfigNetworkType, ConfigSyncProtocolType } from "@effectstream/config";
+import { ckbScriptHash } from "ckb-multichain-connector";
 import { run } from "effection";
 import type { CkbFetch } from "ckb-multichain-connector";
 import { CkbRpcClient } from "ckb-multichain-connector";
@@ -104,6 +105,10 @@ test("CKB fetcher maps exact cell events to one native primitive per output", as
   expect(primitives).toHaveLength(2);
   expect(primitives.map((primitive) => primitive.output.payload.cell.outPoint.index)).toEqual(["0", "1"]);
   expect(primitives[0]?.output.payload.cell.capacityShannons).toBe("10000000000");
+  expect(primitives[0]?.syncProtocol.contractAddress).toBeUndefined();
+  expect(primitives[0]?.output.payload.cell.matchedScriptHash).toBe(ckbScriptHash({
+    codeHash: hash("a"), hashType: "type", args: "0x1234",
+  }));
   expect(primitives[0]?.output.payload.eventId).toMatch(/^ckb-cell-created:[0-9a-f]{64}$/);
   expect(result.lastPage.own.height).toBe(1);
   expect(result.lastPage.own.cursor?.lastProcessed?.height).toBe("1");

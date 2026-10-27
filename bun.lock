@@ -1167,7 +1167,7 @@
         "@utxorpc/spec": "^0.18.1",
         "avail-js-sdk": "^0.4.2",
         "buffer": "^6.0.3",
-        "ckb-multichain-connector": "file:../../../../ckb-multichain-connector",
+        "ckb-multichain-connector": "git+https://github.com/bratipah/ckb-multichain-connector.git#c07f860030dd5c94725e66ad58c57e0a5b0a8bd0",
         "denque": "^2.1.0",
         "effection": "3.5.0",
         "graphql-ws": "^6.0.6",
@@ -4267,7 +4267,7 @@
 
     "@effectstream/sync/@sinclair/typebox": ["@sinclair/typebox@0.34.41", "", {}, "sha512-6gS8pZzSXdyRHTIqoqSVknxolr1kzfy4/CeDnrzsVz8TTIWUbOBr6gnzOmTYJ3eXQNh4IYHIGi5aIL7sOZ2G/g=="],
 
-    "@effectstream/sync/ckb-multichain-connector": ["ckb-multichain-connector@file:../ckb-multichain-connector", { "dependencies": { "@noble/hashes": "^1.8.0" }, "devDependencies": { "@biomejs/biome": "2.6.2", "@types/bun": "1.4.0", "typescript": "5.9.3" } }],
+    "ckb-multichain-connector": ["ckb-multichain-connector@github:bratipah/ckb-multichain-connector#c07f860", { "dependencies": { "@noble/hashes": "^1.8.0" } }, "Bratipah-ckb-multichain-connector-c07f860", "sha512-HTpzB7SCXhe2TSBedrNJ47tnXvQStRRyhEMMTgsjhH/gIiIkuUaue29S74Tw2Y7Dku3NAmdbRr7Pfcp/bSoZyQ=="],
 
     "@effectstream/sync/effection": ["effection@3.5.0", "", {}, "sha512-PcKRGoP68CM3c/DODTc38xp0rIjfREH7/fBGu4tiHU/aPb/PvSxv3tvWaJt6JxpxqT0jIXvcOyn+yjk46KcNXw=="],
 

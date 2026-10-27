@@ -35,7 +35,9 @@ test("CKB is registered as a network and parallel protocol with a genesis-bound 
   expect(Value.Check(networkTypes[ConfigNetworkType.CKB].allProperties(true), ckbNetwork)).toBe(true);
   expect(Value.Check(parallelSyncProtocolTypes[ConfigSyncProtocolType.CKB_RPC_PARALLEL].allProperties(true), ckbProtocol)).toBe(true);
   expect(SyncProtocolToNetwork[ConfigSyncProtocolType.CKB_RPC_PARALLEL]).toBe(ConfigNetworkType.CKB);
-  expect(caip2PrefixFor(ckbNetwork as any)).toBe(`ckb:${hash("0").slice(2, 34)}`);
+  expect(caip2PrefixFor(ckbNetwork as any)).toBe(`ckb:${hash("0").slice(2)}`);
+  expect(caip2PrefixFor({ ...ckbNetwork, genesisBlockHash: `0x${"0".repeat(32)}${"1".repeat(32)}` } as any))
+    .not.toBe(caip2PrefixFor(ckbNetwork as any));
 });
 
 test("CKB rejects malformed identity, unsupported network names, and invalid scripts", () => {
